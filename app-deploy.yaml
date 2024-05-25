@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubedeploy
+  namespace: kubewiki
+  labels:
+    app: kubewiki
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubewiki
+  template:
+    metadata:
+      name: kubewiki
+      namespace: kubewiki
+      labels:
+        app: kubewiki
+    spec:
+      containers:
+      - name: kubewiki
+        image: nginx
+        ports:
+          - containerPort: 80
+            protocol: TCP
+            name: http
+        resources:
+          requests:
+            cpu: "0.2"
+            memory: 64Mi
+          limits:
+            cpu: "0.5"
+            memory: 128Mi
+        volumeMounts:
+        - name: nginx-kubewiki
+          mountPath: /etc/nginx/http.d/default.conf
+        - name: kubewiki-data
+          mountPath: /var/www/localhost/htdocs/dokuwiki
+
+      volumes:
+      - name: nginx-kubewiki
+        configMap:
+          name: nginx-config
+      - name: kubewiki-data
+        persistentVolumeClaim:
+          claimName: kubewiki-pvc
