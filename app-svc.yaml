@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubewiki-service
+  namespace: kubewiki
+spec:
+  selector:
+    app: kubewiki
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
