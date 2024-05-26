@@ -33,7 +33,8 @@ spec:
             memory: 128Mi
         volumeMounts:
         - name: nginx-kubewiki
-          mountPath: /etc/nginx/http.d/default.conf
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
         - name: kubewiki-data
           mountPath: /var/www/localhost/htdocs/dokuwiki
 
