@@ -19,7 +19,8 @@ spec:
     spec:
       containers:
       - name: kubewiki
-        image: nginx
+        image: fabiomfrade/kubewiki:latest
+        imagePullPolicy: Always
         ports:
           - containerPort: 80
             protocol: TCP
