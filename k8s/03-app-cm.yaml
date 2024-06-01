@@ -8,8 +8,8 @@ data:
     events { }
     http {
       server {
-        server_name dokuwiki.site.sample;
-        listen 80;
+        server_name localhost;
+        listen 127.0.0.1;
         autoindex off;
         client_max_body_size 15M;
         client_body_buffer_size 128k;
@@ -40,7 +40,8 @@ data:
 
         location ~ \.php$ {
           try_files $uri =404;
-          fastcgi_pass   127.0.0.1:9000;
+          # fastcgi_pass   127.0.0.1:9000;
+          fastcgi_pass unix:/run/php/php8.2-fpm.sock;
           fastcgi_index  index.php;
           fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
           include /etc/nginx/fastcgi_params;
