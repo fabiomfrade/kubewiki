@@ -18,9 +18,14 @@ O projeto consiste nos seguintes componentes principais:
 
 - Kubernetes cluster
 - kubectl configurado para se comunicar com o seu cluster
+- Para o VPA, ter o Vertical Pod AutoScaler configurado no cluster
 
 ## Visão do Projeto
+-- Inserir imagem draw --
 
+## Adicionais
+- Adicionar ___sidecar___ do Metrics-Server para coletar estatísticas de uso e outras informações do projeto
+- Configurar as Probes para monitoramento do Pod
 ---
 ![kuberntes](https://img.shields.io/badge/kubernetes-326ce5.svg?&style=for-the-badge&logo=kubernetes&logoColor=white) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
 # Kubewiki Project
@@ -42,6 +47,11 @@ The project consists of the following main components:
 
 - Kubernetes cluster
 - kubectl configured to communicate with your cluster
+- To use VPA, need to have configured Vertical Pod Autoscaler in your cluster
 
 ## Project Overview
+-- Insert draw Image --
 
+## Additional
+- Add Metrics-Server ___sidecar___ to collect stats and other project information
+- Configure Deployment Probes
