@@ -21,7 +21,7 @@ O projeto consiste nos seguintes componentes principais:
 - Para o VPA, ter o Vertical Pod AutoScaler configurado no cluster
 
 ## Visão do Projeto
--- Inserir imagem draw --
+![Estrutura do Projeto](./images/kubewiki.png)
 
 ## Adicionais
 - Adicionar ___sidecar___ do Metrics-Server para coletar estatísticas de uso e outras informações do projeto
@@ -50,7 +50,7 @@ The project consists of the following main components:
 - To use VPA, need to have configured Vertical Pod Autoscaler in your cluster
 
 ## Project Overview
--- Insert draw Image --
+![Project Architecture](./images/kubewiki.png)
 
 ## Additional
 - Add Metrics-Server ___sidecar___ to collect stats and other project information
