@@ -33,7 +33,7 @@ Se desejar remover o projeto, basta rodar o mesmo script com a opção ```uninst
 
 ### Melhorias futuras
 - Adicionar ___sidecar___ do Metrics-Server para coletar estatísticas de uso e outras informações do projeto
-- Configurar as Probes para monitoramento do Pod
+- ~~**Configurar as Probes para monitoramento do Pod**~~
 ---
 ![kuberntes](https://img.shields.io/badge/kubernetes-326ce5.svg?&style=for-the-badge&logo=kubernetes&logoColor=white) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
 # Kubewiki Project
@@ -41,7 +41,7 @@ Se desejar remover o projeto, basta rodar o mesmo script com a opção ```uninst
 This project implements the DokuWiki application on Kubernetes, using Nginx as the web server. The setup is designed to ensure that the application is accessible externally and that resources are allocated and adjusted as needed.
 
 ## Goal
-The project objective was focused on creation of kubernetes objects using commonly practices by real world environments. The Dockerfile created is just to have an self-created application image.
+The project goal was focused on creation of kubernetes objects using commonly practices from real world environments. The Dockerfile created is just to have a self-created application image.
 
 ## Components
 
@@ -71,4 +71,4 @@ If you wanna remove components, just run <code>./setup.sh --uninstall</code> and
 
 ### Future updates
 - Add Metrics-Server ___sidecar___ to collect stats and other project information
-- Configure Deployment Probes
+- ~~**Configure Deployment Probes**~~
