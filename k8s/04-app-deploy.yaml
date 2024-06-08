@@ -16,6 +16,9 @@ spec:
       namespace: kubewiki
       labels:
         app: kubewiki
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '9113'
     spec:
       containers:
       - name: kubewiki
@@ -63,6 +66,21 @@ spec:
           subPath: default.conf
         - name: kubewiki-data
           mountPath: /var/www/localhost/htdocs/dokuwiki
+          
+      - name: nginx-exporter
+        image: nginx/nginx-prometheus-exporter:latest
+        args:
+          - '-nginx.scrape-uri=http://localhost/metrics'
+        resources:
+          limits:
+            memory: "64Mi"
+            cpu: "0.3"
+          requests:
+            memory: "32Mi"
+            cpu: "0.1"
+        ports:
+          - containerPort: 9113
+            name: metrics
 
       volumes:
       - name: nginx-kubewiki

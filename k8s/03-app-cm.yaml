@@ -57,6 +57,12 @@ data:
         fastcgi_temp_file_write_size 256k;
       }
 
+      location /metrics {
+        stub_status on;
+        access_log off;
+      }
+
+
       location ~ /(data|conf|bin|inc|vendor)/ {
         deny all;
       }
