@@ -3,7 +3,7 @@ LABEL maintainer="Fábio Frade - fabiomfrade@gmail.com"
 COPY start.sh /opt
 RUN set -x \
     # Instalacao do PHP
-    && apk update && apk upgrade && apk add php-fpm nginx vim php-bz2 php-mbstring php-gd php-intl php-xml curl php-zip php-ldap php-ctype php-session \
+    && apk update && apk upgrade && apk add php-fpm nginx php-bz2 php-openssl php-mbstring php-gd php-intl php-xml curl php-zip php-ldap php-ctype php-session \
     # Configuracao adicional
     && sed -i "s|upload_max_filesize = 2M|upload_max_filesize = 200M|g" /etc/php83/php.ini \
     # Baixando a Wiki
