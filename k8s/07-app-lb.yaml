@@ -10,3 +10,5 @@ spec:
   ports:
   - port: 80
     name: http
+  - port: 9113
+    name: metrics

@@ -16,6 +16,8 @@ funcadd() {
     for i in $(ls -tv1 ./k8s/[0-9]*)
         do kubectl apply -f "$i"
     done
+
+    kubectl apply -f ./k8s/monitoring/
     
     read -rp "Install VPA? [Y/N] " vpa
     case "$vpa" in
@@ -41,6 +43,9 @@ funcremove() {
     for i in $(ls -trv1 ./k8s/[0-9]*)
         do kubectl delete -f "$i"
     done
+
+    # Removing monitoring permissions
+    kubectl delete -f ./k8s/monitoring/
 
     # Checking if VPA are installed on cluster
     kubectl get vpa -n kubewiki | grep -i kube > /dev/null
