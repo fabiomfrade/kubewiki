@@ -58,11 +58,11 @@ The project consists of the following main components:
 
 - Kubernetes cluster
 - kubectl configured to communicate with your cluster
-- To use VPA, need to have configured Vertical Pod Autoscaler in your cluster
+- To use VPA, it's necessary to have configured Vertical Pod Autoscaler in your cluster
 
 ## Installation Guide
 
-The installation process is too simple, just needing to clone this repository, access the directory downloaded and run <code>./setup.sh --install</code> and all objects will be created following the right creation order; After that, just need to answer future questions to choice if you wanna install VPA and/or Ingress extra components.
+The installation process is too simple, just needing to clone this repository, access the directory downloaded and run <code>./setup.sh --install</code> and all objects will be created following the right creation order; After that, just need to answer future questions to choose if you wanna install VPA and/or Ingress extra components.
 
 If you wanna remove components, just run <code>./setup.sh --uninstall</code> and all previously created objects will be deleted.
 
