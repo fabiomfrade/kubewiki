@@ -14,8 +14,9 @@ O projeto consiste nos seguintes componentes principais:
 - **ConfigMap**: Armazena a configuração do Nginx.
 - **Persistent Volume (PV)** e **Persistent Volume Claim (PVC)**: Armazenam os dados da DokuWiki.
 - **Service**: Permite o acesso à aplicação dentro do cluster.
-- **Ingress**: Permite o acesso externo à aplicação.
-- **Vertical Pod Autoscaler (VPA)**: Ajusta automaticamente os recursos alocados para a aplicação.
+- **Ingress**: ___(Opcional)___ Permite o acesso externo à aplicação.
+- **Vertical Pod Autoscaler (VPA)**: ___(Opcional)___ Ajusta automaticamente os recursos alocados para a aplicação.
+- **ClusterRole & ClusterRoleBinding**: Criados para permitir que caso você possua uma solução de monitoramento em seu cluster, a mesma consiga fazer a leitura das métricas no namespace da aplicação
 
 ## Pré-requisitos
 
@@ -32,7 +33,7 @@ Se desejar remover o projeto, basta rodar o mesmo script com a opção ```uninst
 ![Estrutura do Projeto](./images/kubewiki.png)
 
 ### Melhorias futuras
-- Adicionar ___sidecar___ do Metrics-Server para coletar estatísticas de uso e outras informações do projeto
+- ~~**Adicionar ___sidecar___ do Metrics-Server para coletar estatísticas de uso e outras informações do projeto**~~
 - ~~**Configurar as Probes para monitoramento do Pod**~~
 ---
 ![kuberntes](https://img.shields.io/badge/kubernetes-326ce5.svg?&style=for-the-badge&logo=kubernetes&logoColor=white) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
@@ -51,8 +52,9 @@ The project consists of the following main components:
 - **ConfigMap**: Stores the Nginx configuration.
 - **Persistent Volume (PV)** and **Persistent Volume Claim (PVC)**: Store the DokuWiki data.
 - **Service**: Allows access to the application within the cluster.
-- **Ingress**: Enables external access to the application.
-- **Vertical Pod Autoscaler (VPA)**: Automatically adjusts the resources allocated to the application.
+- **Ingress**: ___(Optional)___ Enables external access to the application.
+- **Vertical Pod Autoscaler (VPA)**: ___(Optional)___ Automatically adjusts the resources allocated to the application.
+- **ClusterRole & ClusterRoleBinding**: Created to permit if you have a monitoring solution configured in your cluster, can read metrics in the application namespace
 
 ## Prerequisites
 
@@ -70,5 +72,5 @@ If you wanna remove components, just run <code>./setup.sh --uninstall</code> and
 ![Project Architecture](./images/kubewiki.png)
 
 ### Future updates
-- Add Metrics-Server ___sidecar___ to collect stats and other project information
+- ~~**Add Metrics-Server ___sidecar___ to collect stats and other project information**~~
 - ~~**Configure Deployment Probes**~~

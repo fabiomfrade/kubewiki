@@ -9,7 +9,8 @@ spec:
     matchLabels:
       app: kubewiki
   namespaceSelector:
-    any: true
+    matchNames:
+    - kubewiki
   endpoints:
     - interval: 10s
       path: /metrics
