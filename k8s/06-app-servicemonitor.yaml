@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kubewiki-servicemonitor
+  labels:
+    app: kubewiki
+spec:
+  selector:
+    matchLabels:
+      app: kubewiki
+  namespaceSelector:
+    any: true
+  endpoints:
+    - interval: 10s
+      path: /metrics
+      targetPort: 9113
