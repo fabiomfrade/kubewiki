@@ -4,41 +4,42 @@
 
 helpfunction() {
     echo ""
-    echo "Usage: $0 -install -uninstall -vpa -ingress"
-    echo -e "\t-install to install default objects in your cluster: deploy, PV, PVC, CM and SVC"
-    echo -e "\t-uninstall to uninstall all itens previosly installed"
+    echo "Usage: $0 -install -uninstall"
+    echo -e "\t-install to deploy default objects in your cluster: Namespace, deploy, PV, PVC, CM, Load Balancer, SVC, Service Monitor and Monitoring Roles"
+    echo -e "\t-uninstall to remove all itens previosly deployed"
     exit 1
 }
 
 funcadd() {
-    echo "Installing Kubewiki on your cluster"
+    echo "Deploying Kubewiki on your cluster"
 
     for i in $(ls -tv1 ./k8s/[0-9]*)
         do kubectl apply -f "$i"
     done
 
+    sleep 2
+    echo "Deploying Monitoring roles"
     kubectl apply -f ./k8s/monitoring/
     
-    read -rp "Install VPA? [Y/N] " vpa
-    case "$vpa" in
-        [Yy] ) kubectl apply -f ./k8s/deploy-vpa.yaml;;
-        # [Yy] ) echo "Installing VPA";;
+    read -rp "Deploy Optional Features? (VPA and Ingress) [Y/N] " optional
+    case "$optional" in
+        [Yy] ) kubectl apply -f ./k8s/optional/;;
+        # [Yy] ) kubectl apply -f ./k8s/deploy-vpa.yaml;;
         [Nn] ) echo "";;
         * ) echo "Just answer Y or N";;
     esac
 
-    read -rp "Install Ingress? [Y/N] " ingress
-    case "$ingress" in
-        [Yy] ) kubectl apply -f ./k8s/ingress.yaml;;
-        # [Yy] ) echo "Installing Ingress";;
-        [Nn] ) echo "";;
-        * ) echo "Just answer Y or N";;
-    esac
+    # read -rp "Install Ingress? [Y/N] " ingress
+    # case "$ingress" in
+    #     [Yy] ) kubectl apply -f ./k8s/ingress.yaml;;
+    #     [Nn] ) echo "";;
+    #     * ) echo "Just answer Y or N";;
+    # esac
     exit
 }
 
 funcremove() {
-    echo "Uninstalling Kubewiki from your cluster"
+    echo "Removing Kubewiki from your cluster"
 
     for i in $(ls -trv1 ./k8s/[0-9]*)
         do kubectl delete -f "$i"
@@ -52,7 +53,7 @@ funcremove() {
 
     if [ $? -eq 0 ]
     then
-        kubectl delete -f ./k8s/deploy-vpa.yaml
+        kubectl delete -f ./k8s/optional/deploy-vpa.yaml
     else
         echo "VPA not found"
     fi
@@ -62,7 +63,7 @@ funcremove() {
 
     if [ $? -eq 0 ]
     then
-        kubectl delete -f ./k8s/ingress.yaml
+        kubectl delete -f ./k8s/optional/ingress.yaml
     else
         echo "Ingress not found"
     fi
@@ -74,7 +75,5 @@ funcremove() {
 case "$1" in
     --install ) funcadd ;;
     --uninstall ) funcremove ;;
-    --vpa ) funcvpa ;;
-    --ingress ) funcingress ;;
     * ) helpfunction ;;
 esac
